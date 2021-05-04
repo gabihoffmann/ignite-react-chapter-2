@@ -14,6 +14,8 @@ export function NewTransactionModal({isOpen, onRequestClose}: NewTransactionsMod
     <Modal 
       isOpen={isOpen}
       onRequestClose={onRequestClose}
+      overlayClassName="react-modal-overlay"
+      className="react-modal-content"
     >
         <Container>
           <h2>Nova transação</h2>
