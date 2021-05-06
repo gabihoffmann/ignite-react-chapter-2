@@ -68,7 +68,7 @@ export const TransactionTypeContainer = styled.div`
     justify-content: center;
 
     &:hover{
-      border-color: ${darken(0.3, 'var(--border-box)')}
+      border-color: ${darken(0.3, '#D7D7D7')}
     }
 
     img {
