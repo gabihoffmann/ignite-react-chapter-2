@@ -24,7 +24,7 @@ export function NewTransactionModal({isOpen, onRequestClose}: NewTransactionsMod
     event.preventDefault();
     const data = {title, value, category, type};
 
-    api.post('/transaction', data);
+    api.post('/transactions', data);
   }
 
   return (

@@ -7,6 +7,7 @@ import {App} from './App';
 createServer({
   routes(){
     this.namespace = 'api';
+
     this.get("/transactions", () => {
       return [{
         id: 1,
@@ -14,7 +15,14 @@ createServer({
 				amount: 400,
 				type: 'deposit',
       }]
-    })
+    });
+
+    this.post('/transactions', (schema, request) => {
+      //access data in the BODY request and parse JSON to javascript
+      const data = JSON.parse(request.requestBody);
+      return data;
+    });
+
   }
 })
 
