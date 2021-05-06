@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import Modal from 'react-modal';
 
 
 import { Dashboard } from "./components/Dashboard";
@@ -9,8 +10,7 @@ import { GlobalStyle } from "./styles/global";
 
 
 export function App() {
-
-
+  Modal.setAppElement('#root'); 
   const [isNewTransactionModalOpen, setIsNewTransactionModalOpen] = useState(false);
   
   function handleOpenNewTransactionModal(){

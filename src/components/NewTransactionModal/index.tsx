@@ -13,7 +13,6 @@ interface NewTransactionsModalProps {
 }
 
 export function NewTransactionModal({isOpen, onRequestClose}: NewTransactionsModalProps){
-  Modal.setAppElement('#root'); 
 
   const [type, setTransactionType] = useState('deposit');
   const [title, setTitle] = useState('');
