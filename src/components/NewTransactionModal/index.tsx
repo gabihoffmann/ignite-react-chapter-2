@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { FormEvent, useState } from 'react';
 import Modal from 'react-modal';
 
 import  { Container, TransactionTypeContainer, RadioBox } from './styles';
@@ -17,6 +17,10 @@ export function NewTransactionModal({isOpen, onRequestClose}: NewTransactionsMod
 
   const [transactionType, setTransactionType] = useState('deposit');
 
+  function handleWithTheSubmit(event: FormEvent){
+    event.preventDefault();
+  }
+
   return (
     <Modal 
       isOpen={isOpen}
@@ -27,7 +31,7 @@ export function NewTransactionModal({isOpen, onRequestClose}: NewTransactionsMod
       <button type="button" onClick={onRequestClose} className="react-model-close">
         <img src={closeImg} alt="Fechar modal"/>
       </button>
-        <Container>
+        <Container onSubmit={handleWithTheSubmit}>
           <h2>Nova transação</h2>
           <input type="text" placeholder="Título"/>
           <input type="number" placeholder="Valor"/>
