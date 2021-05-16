@@ -1,4 +1,3 @@
-import { transitions } from 'polished';
 import { createContext, useEffect, useState, ReactNode } from 'react';
 import { api } from "./services/api";
 
@@ -29,5 +28,5 @@ export function TransactionProvider({children}: TransactionProviderProps){
     .then(response => setTransactions(response.data.transactions))
   },[])
 
-  return <TransactionContext.Provider value={transactions}>{children}</TransactionContext.Provider>
+  return <TransactionContext.Provider value={{transactions, createTransaction}}>{children}</TransactionContext.Provider>
 }
