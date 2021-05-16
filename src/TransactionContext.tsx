@@ -1,8 +1,8 @@
+import { transitions } from 'polished';
 import { createContext, useEffect, useState, ReactNode } from 'react';
 import { api } from "./services/api";
 
 export const TransactionContext = createContext<Transaction[]>([]);
-
 interface Transaction{
   id: number,
   title: string,
@@ -11,12 +11,13 @@ interface Transaction{
   category: string,
   createdAt: string,
 }
-
 interface TransactionProviderProps{
   children: ReactNode;
 }
 
-export function createTransaction(transaction){
+type TransactionInput = Omit<Transaction, 'id' | 'createdAt'>;
+
+export function createTransaction(transaction: TransactionInput){
   api.post('/transaction', transaction)
 }
 
