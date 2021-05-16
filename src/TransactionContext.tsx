@@ -16,6 +16,10 @@ interface TransactionProviderProps{
   children: ReactNode;
 }
 
+export function createTransaction(transaction){
+  api.post('/transaction', transaction)
+}
+
 export function TransactionProvider({children}: TransactionProviderProps){
   const [transactions, setTransactions] = useState<Transaction[]>([]);
 
