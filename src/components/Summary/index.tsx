@@ -5,6 +5,23 @@ import outcomeImg from '../../assets/outcome.svg';
 import totalImg from '../../assets/total.svg';
 
 export function Summary(){
+  const { transactions } = useContext(TransactionContext);
+  
+  const summary = transactions.reduce((acc, transaction) => {
+      if(transaction.type === 'deposit'){
+         acc.deposits += transaction.amount;
+         acc.total += transaction.amount
+        }else{
+          acc.withdraws += transaction.amount;
+          acc.total -= transaction.amount
+        }
+      return acc;
+  },{
+    deposits: 0,
+    withdraws: 0,
+    total: 0
+  });
+  
   return (
     <Container>
       <Card>
