@@ -20,8 +20,8 @@ type TransactionInput = Omit<Transaction, 'id' | 'createdAt'>;
 
 export const TransactionContext = createContext<TransactionContextData>({} as TransactionContextData);
 
-export function createTransaction(transaction: TransactionInput){
-  api.post('/transactions', transaction)
+async function createTransaction(transaction: TransactionInput){
+  await api.post('/transactions', transaction)
 }
 
 export function TransactionProvider({children}: TransactionProviderProps){
