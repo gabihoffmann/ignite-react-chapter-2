@@ -1,7 +1,5 @@
 import { createContext, useEffect, useState, ReactNode } from 'react';
 import { api } from "./services/api";
-
-export const TransactionContext = createContext<Transaction[]>([]);
 interface Transaction{
   id: number,
   title: string,
@@ -34,5 +32,8 @@ export function TransactionProvider({children}: TransactionProviderProps){
     .then(response => setTransactions(response.data.transactions))
   },[])
   
-  return <TransactionContext.Provider value={{transactions, createTransaction}}>{children}</TransactionContext.Provider>
-}
+  return (
+  <TransactionContext.Provider value={{ transactions, createTransaction }}>
+    {children}
+  </TransactionContext.Provider>)
+};
