@@ -23,7 +23,13 @@ export function NewTransactionModal({isOpen, onRequestClose}: NewTransactionsMod
 
   function handleCreateNewTransaction(event: FormEvent){
     event.preventDefault();
-    createTransaction({title, amount, category, type});
+    await createTransaction({title, amount, category, type});
+    
+    onRequestClose();
+    setTransactionType('deposit');
+    setTitle('');
+    setAmount(0);
+    setCategory('');
   }
 
   return (
