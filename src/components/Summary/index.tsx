@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { TransactionContext } from '../../TransactionContext';
 import { Container, Card } from "./styles";
 
 import incomeImg from '../../assets/income.svg';
@@ -29,21 +31,36 @@ export function Summary(){
           <p>Entradas</p>
           <img src={incomeImg} alt="Entradas"/>
         </header>
-        <strong>R$ 17.400,00</strong>
+        <strong>
+          {new Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+          }).format(summary.deposits)}
+        </strong>
       </Card>
       <Card>
         <header>  
           <p>Saídas</p>
           <img src={outcomeImg} alt="Saídas"/>
         </header>
-        <strong>R$ 1.259,00</strong>
+        <strong> 
+        - {new Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+          }).format(summary.withdraws)}
+        </strong>
       </Card>
       <Card className="highlight">
         <header>  
           <p>Total</p>
           <img src={totalImg} alt="Total"/>
         </header>
-        <strong>R$ 16.141,00</strong>
+        <strong>
+          {new Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+          }).format(summary.total)}
+        </strong>
       </Card>
     </Container>
   )
