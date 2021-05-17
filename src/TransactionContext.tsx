@@ -20,6 +20,8 @@ interface TransactionContextData{
 
 type TransactionInput = Omit<Transaction, 'id' | 'createdAt'>;
 
+export const TransactionContext = createContext<TransactionContextData>({} as TransactionContextData);
+
 export function createTransaction(transaction: TransactionInput){
   api.post('/transaction', transaction)
 }
