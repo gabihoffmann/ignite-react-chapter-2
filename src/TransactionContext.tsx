@@ -13,7 +13,7 @@ interface TransactionProviderProps{
 }
 interface TransactionContextData{
   transactions: Transaction[],
-  createTransaction: (transaction: TransactionInput) => void,
+  createTransaction: (transaction: TransactionInput) => Promise<void>,
 }
 
 type TransactionInput = Omit<Transaction, 'id' | 'createdAt'>;
