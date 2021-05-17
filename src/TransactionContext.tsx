@@ -20,9 +20,6 @@ type TransactionInput = Omit<Transaction, 'id' | 'createdAt'>;
 
 export const TransactionContext = createContext<TransactionContextData>({} as TransactionContextData);
 
-async function createTransaction(transaction: TransactionInput){
-  await api.post('/transactions', transaction)
-}
 
 export function TransactionProvider({children}: TransactionProviderProps){
   const [transactions, setTransactions] = useState<Transaction[]>([]);
@@ -30,10 +27,15 @@ export function TransactionProvider({children}: TransactionProviderProps){
   useEffect(()=>{
     api.get('transactions')
     .then(response => setTransactions(response.data.transactions))
-  },[])
+  },[]);
+
+  async function createTransaction(transactionInput: TransactionInput){
+    await api.post('/transactions', transactionInput);
+  };
   
   return (
-  <TransactionContext.Provider value={{ transactions, createTransaction }}>
+    <TransactionContext.Provider value={{ transactions, createTransaction }}>
     {children}
   </TransactionContext.Provider>)
+
 };
