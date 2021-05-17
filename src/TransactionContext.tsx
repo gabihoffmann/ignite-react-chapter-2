@@ -23,7 +23,7 @@ type TransactionInput = Omit<Transaction, 'id' | 'createdAt'>;
 export const TransactionContext = createContext<TransactionContextData>({} as TransactionContextData);
 
 export function createTransaction(transaction: TransactionInput){
-  api.post('/transaction', transaction)
+  api.post('/transactions', transaction)
 }
 
 export function TransactionProvider({children}: TransactionProviderProps){
